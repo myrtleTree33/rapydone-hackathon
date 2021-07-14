@@ -23,7 +23,27 @@ async function routes(fastify, opts) {
       data: { redirect_url: redirectUrl },
     } = rapydRes;
 
-    return Promise.resolve({ redirectUrl });
+    return Promise.resolve({
+      messages: [
+        {
+          attachment: {
+            type: 'template',
+            payload: {
+              template_type: 'button',
+              text: 'Hello!',
+              buttons: [
+                {
+                  type: 'web_url',
+                  url: redirectUrl,
+                  webview_height_ratio: 'compact',
+                  title: 'Pay now',
+                },
+              ],
+            },
+          },
+        },
+      ],
+    });
   });
 }
 

@@ -1,0 +1,19 @@
+{
+  "env": {
+    "jest/globals": true
+  },
+  "extends": ["airbnb", "prettier", "plugin:node/recommended"],
+  "plugins": ["prettier", "jest"],
+  "rules": {
+    "prettier/prettier": ["error"],
+    "no-unused-vars": 0,
+    "import/extensions": 0,
+    "import/prefer-default-export": 0,
+    "no-plusplus": 0
+  },
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "ecmaFeatures": {}
+  }
+}

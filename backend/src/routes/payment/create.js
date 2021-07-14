@@ -30,7 +30,7 @@ async function routes(fastify, opts) {
             type: 'template',
             payload: {
               template_type: 'button',
-              text: 'Hello!',
+              text: 'Please make payment via the link',
               buttons: [
                 {
                   type: 'web_url',

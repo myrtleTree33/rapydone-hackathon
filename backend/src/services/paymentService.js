@@ -25,10 +25,12 @@ export const genPaymentUrl = async ({
     const path = '/v1/checkout';
     const body = JSON.stringify({
       amount,
-      complete_checkout_url: 'https://www.google.com',
+      complete_checkout_url:
+        'https://docs.google.com/document/d/e/2PACX-1vTj21b4zmJNtPCtzABkOXHKGLRLyy1BCAm9SCZRuOKRgk1sdOEnIlIa1-ON1fpTULFFHS51uBEa8Khs/pub',
       country,
       currency,
-      error_checkout_url: 'https://www.yahoo.com',
+      error_checkout_url:
+        'https://docs.google.com/document/d/e/2PACX-1vTj21b4zmJNtPCtzABkOXHKGLRLyy1BCAm9SCZRuOKRgk1sdOEnIlIa1-ON1fpTULFFHS51uBEa8Khs/pub',
       merchant_reference_id: merchantRefId,
       language: 'en',
       metadata: {

@@ -1,4 +1,4 @@
-import { genPaymentUrl } from '../../services/paymentService.js';
+import { genPaymentUrlPersistent } from '../../services/paymentService.js';
 
 const ACCESS_KEY = 'D8DD679C87C8C9C3A285';
 const SECRET_KEY =
@@ -8,7 +8,7 @@ async function routes(fastify, opts) {
   fastify.post('/', async (request, reply) => {
     const { amount, country, currency, merchantRefId } = request.body;
 
-    const rapydRes = await genPaymentUrl({
+    const rapydRes = await genPaymentUrlPersistent({
       accessKey: ACCESS_KEY,
       secretKey: SECRET_KEY,
       amount,

@@ -1,12 +1,38 @@
 import https from 'https';
 import crypto from 'crypto';
 
-const ACCESS_KEY = 'D8DD679C87C8C9C3A285';
-const SECRET_KEY =
-  '16fa289b46571f0cfd6c0b6e268f7b798676b1273809fd223d7b6bd4b994b7ca07ac6561b3f9cf01';
-const AMOUNT = 11.0;
-const COUNTRY = 'SG';
-const CURRENCY = 'SGD';
+const MAX_TRIES = 5;
+
+export const genPaymentUrlPersistent = async ({
+  accessKey,
+  secretKey,
+  amount,
+  country,
+  currency,
+  merchantRefId,
+}) => {
+  let response = undefined;
+  let numTries = 0;
+
+  while (!response && numTries < MAX_TRIES) {
+    try {
+      response = await genPaymentUrl({
+        accessKey,
+        secretKey,
+        amount,
+        country,
+        currency,
+        merchantRefId,
+      });
+
+      numTries++;
+    } catch (e) {
+      console.error('Error sending request to Rapyd.  Retrying...');
+    }
+
+    return Promise.resolve(response);
+  }
+};
 
 export const genPaymentUrl = async ({
   accessKey,
